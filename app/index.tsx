@@ -15,27 +15,6 @@ import { ThemedView } from '@/components/ThemedView';
 export default function HomeScreen() {
   const router = useRouter();
 
-  const tvhandler = useCallback((evt: HWEvent) => {
-    if (evt && evt.eventType) {
-      switch (evt.eventType) {
-        case 'right':
-          console.log(`Right button pressed in home screen`);
-          break;
-        case 'left':
-          console.log(`Left button pressed in home screen`);
-          break;
-        case 'menu':
-          console.log(`Menu button pressed in home screen`);
-          break;
-        default:
-          break;
-      }
-    }
-  }, []);
-
-  // useScopedTVHandler(true, "menuDetect", tvhandler);
-  useTVEventHandler(tvhandler);
-
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -49,40 +28,14 @@ export default function HomeScreen() {
       <ThemedView>
         <Pressable
           onPress={() => {
-            router.push({ pathname: '/menudetect' });
+            router.push({ pathname: '/scrollview' });
           }}
           style={({ pressed, focused }) => [
             styles.button,
             pressed || focused ? { backgroundColor: 'blue' } : {},
           ]}
         >
-          <Text style={styles.buttonText}>To menudetect</Text>
-        </Pressable>
-      </ThemedView>
-      <ThemedView>
-        <Pressable
-          onPress={() => {
-            router.push({ pathname: '/flatListofFlatList' });
-          }}
-          style={({ pressed, focused }) => [
-            styles.button,
-            pressed || focused ? { backgroundColor: 'blue' } : {},
-          ]}
-        >
-          <Text style={styles.buttonText}>To FlatListofFlatList</Text>
-        </Pressable>
-      </ThemedView>
-      <ThemedView>
-        <Pressable
-          onPress={() => {
-            router.push({ pathname: '/anotherList' });
-          }}
-          style={({ pressed, focused }) => [
-            styles.button,
-            pressed || focused ? { backgroundColor: 'blue' } : {},
-          ]}
-        >
-          <Text style={styles.buttonText}>To anotherList</Text>
+          <Text style={styles.buttonText}>To scrollview</Text>
         </Pressable>
       </ThemedView>
     </ParallaxScrollView>
